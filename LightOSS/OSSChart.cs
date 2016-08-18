@@ -17,7 +17,14 @@ namespace LightOSS
         private IMongoCollection<BsonDocument> _coll;
         private string _collection, _database, _xAxisKey;
         private List<string> _counters;
-        private int _count;
+        private int _count, _pollIntervalMs = 60000;
+
+        System.Timers.Timer poller = new System.Timers.Timer()
+        {
+            Interval = 60000,
+            Enabled = true
+        };
+        
 
         public OSSChart(MongoUrl mongoURL, string db,
             string collection, List<string> counters,
@@ -32,7 +39,6 @@ namespace LightOSS
             _count = count;
 
             _initializeDb(mongoURL);
-            _initializeChart();
         }
 
         private void _initializeDb(MongoUrl url)
@@ -48,10 +54,29 @@ namespace LightOSS
             for (int i = 0; i < _counters.Count; i++)
             {
                 chart1.Series.Add(_generateSeries(_counters[i]));
-                _populateData(_counters[i]);
             }
-            
-            
+        }
+
+        private void _timerCallback(object sender, EventArgs e)
+        {
+            _populateData();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if(!int.TryParse(textBox1.Text, out _pollIntervalMs))
+            {
+                MessageBox.Show("Refresh interval must be an integer value!\nExamples:\nValid: 10000 or 30000\nInvalid: 30.45");
+            }
+            poller.Interval = _pollIntervalMs;
+        }
+
+        private void OSSChart_Load(object sender, EventArgs e)
+        {
+            _initializeChart();
+            _populateData();
+
+            poller.Elapsed += new System.Timers.ElapsedEventHandler(_timerCallback);
         }
 
         private System.Windows.Forms.DataVisualization.Charting.Series _generateSeries(string counter)
@@ -65,29 +90,38 @@ namespace LightOSS
             };
         }
 
-        private async void _populateData(string counter)
+        private async void _populateData()
         {
-            var dataPoints = await _coll
-                .Find<BsonDocument>(Builders<BsonDocument>.Filter.Empty)
-                .SortByDescending(r => r[_xAxisKey])
-                .Limit(144)
-                .ToListAsync();
-
-            foreach (var point in dataPoints)
+            this.Invoke(new MethodInvoker(delegate () { this.Text = "OSSChart - Last refreshed at " + DateTime.Now.ToString(); }));
+            for (int i = 0; i < _counters.Count; i++)
             {
-                try
+                this.Invoke(new MethodInvoker(delegate () { chart1.Series[_counters[i]].Points.Clear(); }));
+                var dataPoints = await _coll
+                    .Find<BsonDocument>(Builders<BsonDocument>.Filter.Empty)
+                    .SortByDescending(r => r[_xAxisKey])
+                    .Limit(144)
+                    .ToListAsync();
+
+                this.Invoke(new MethodInvoker(delegate ()
                 {
-                    chart1
-                  .Series[counter]
-                  .Points
-                  .AddXY(((DateTime)point[_xAxisKey]).ToLocalTime(), (long)point[counter]);
-                } catch (InvalidCastException ex)
-                {
-                    chart1
-                  .Series[counter]
-                  .Points
-                  .AddXY(((DateTime)point[_xAxisKey]).ToLocalTime(), (double)point[counter]);
-                } 
+                    foreach (var point in dataPoints)
+                    {
+                        try
+                        {
+                            chart1
+                              .Series[_counters[i]]
+                              .Points
+                              .AddXY(((DateTime)point[_xAxisKey]).ToLocalTime(), (long)point[_counters[i]]);
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            chart1
+                              .Series[_counters[i]]
+                              .Points
+                              .AddXY(((DateTime)point[_xAxisKey]).ToLocalTime(), (double)point[_counters[i]]);
+                        }
+                    }
+                }));
             }
         }
     }
