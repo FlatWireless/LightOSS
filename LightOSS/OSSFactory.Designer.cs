@@ -66,7 +66,7 @@ namespace LightOSS
             this.databaseListBox.FormattingEnabled = true;
             this.databaseListBox.Location = new System.Drawing.Point(228, 12);
             this.databaseListBox.Name = "databaseListBox";
-            this.databaseListBox.Size = new System.Drawing.Size(142, 290);
+            this.databaseListBox.Size = new System.Drawing.Size(142, 485);
             this.databaseListBox.TabIndex = 0;
             this.databaseListBox.SelectedIndexChanged += new System.EventHandler(this.databaseListBox_SelectedIndexChanged);
             // 
@@ -161,7 +161,7 @@ namespace LightOSS
             this.collectionsListBox.FormattingEnabled = true;
             this.collectionsListBox.Location = new System.Drawing.Point(379, 12);
             this.collectionsListBox.Name = "collectionsListBox";
-            this.collectionsListBox.Size = new System.Drawing.Size(142, 290);
+            this.collectionsListBox.Size = new System.Drawing.Size(142, 485);
             this.collectionsListBox.TabIndex = 2;
             // 
             // postCollection
@@ -179,7 +179,7 @@ namespace LightOSS
             this.keyListBox.FormattingEnabled = true;
             this.keyListBox.Location = new System.Drawing.Point(593, 12);
             this.keyListBox.Name = "keyListBox";
-            this.keyListBox.Size = new System.Drawing.Size(183, 290);
+            this.keyListBox.Size = new System.Drawing.Size(183, 485);
             this.keyListBox.TabIndex = 4;
             // 
             // setAxisKey
@@ -356,6 +356,7 @@ namespace LightOSS
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.databaseListBox);
             this.Name = "OSSFactory";
+            this.ShowIcon = false;
             this.Text = "OSSFactory";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
