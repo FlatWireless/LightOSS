@@ -77,6 +77,7 @@ namespace LightOSS
 
         private void postCollection_Click(object sender, EventArgs e)
         {
+            keyListBox.Items.Clear();
             var oneDocument = _client
                 .GetDatabase((string)databaseListBox.SelectedItem)
                 .GetCollection<BsonDocument>((string)collectionsListBox.SelectedItem)
@@ -151,14 +152,22 @@ namespace LightOSS
             var values = await _client
                 .GetDatabase(_db)
                 .GetCollection<BsonDocument>(_coll)
-                .Find(Builders<BsonDocument>.Filter.Empty)
-                .Project(Builders<BsonDocument>.Projection.Include(d => (string)d[_filterKey]))
-                .ToListAsync();
+                .DistinctAsync<dynamic>(_filterKey, Builders<BsonDocument>.Filter.Empty)
+                ;
 
-            foreach(var val in values.Distinct<BsonDocument>())
+            await values.ForEachAsync((v) =>
             {
-                filterValues.Items.Add((string)val[_filterKey]);
-            }
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+                    try
+                    {
+                        filterValues.Items.Add((string)v);
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + "\n\n" + "Only string types are supported currently!", "Problem getting filter values");
+                    }
+                }));
+            });
         }
     }
 }
