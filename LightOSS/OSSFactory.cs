@@ -25,6 +25,67 @@ namespace LightOSS
             _initPersistentSettings();
         }
 
+        private async void _populateDatabaseList()
+        {
+            databaseListBox.Items.Clear();
+            var dbs = await _client.ListDatabasesAsync();
+            await dbs.ForEachAsync(d =>
+            {
+                this.Invoke(new MethodInvoker(delegate () {
+                    databaseListBox.Items.Add((string)d["name"]);
+                }));
+            });
+        }
+        
+        private void _updateLabels()
+        {
+            if (!settingDBLabel.Text.Equals(_db)) settingDBLabel.Text = _db;
+            if (!settingCollLabel.Text.Equals(_coll)) settingCollLabel.Text = _coll;
+            if (!settingXAxisLabel.Text.Equals(_xAxisKey)) settingXAxisLabel.Text = _xAxisKey;
+        }
+
+        private void _fillCountersBox()
+        {
+            countersListBox.Items.Clear();
+            _counters.ForEach(c =>
+            {
+                countersListBox.Items.Add(c);
+            });
+        }
+
+        private void _initPersistentSettings()
+        {
+            server.Text = Settings.Default.Server;
+            user.Text = Settings.Default.User;
+            pass.Text = Settings.Default.Pass;
+        }
+
+        private async void _fillFilterValues()
+        {
+            filterValues.Items.Clear();
+            var values = await _client
+                .GetDatabase(_db)
+                .GetCollection<BsonDocument>(_coll)
+                .DistinctAsync<dynamic>(_filterKey, Builders<BsonDocument>.Filter.Empty)
+                ;
+
+            await values.ForEachAsync((v) =>
+            {
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+                    try
+                    {
+                        filterValues.Items.Add((string)v);
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + "\n\n" + "Only string types are supported currently!", "Problem getting filter values");
+                    }
+                }));
+            });
+        }
+
+        #region Event Handlers
+
         private void ossButton_Click(object sender, EventArgs e)
         {
             var host = server.Text.Contains("mongodb://") ? server.Text : "mongodb://" + server.Text;
@@ -37,18 +98,6 @@ namespace LightOSS
             _client = new MongoClient(url.ToMongoUrl());
             _populateDatabaseList();
             _url = url.ToMongoUrl();
-        }
-
-        private async void _populateDatabaseList()
-        {
-            databaseListBox.Items.Clear();
-            var dbs = await _client.ListDatabasesAsync();
-            await dbs.ForEachAsync(d =>
-            {
-                this.Invoke(new MethodInvoker(delegate () {
-                    databaseListBox.Items.Add((string)d["name"]);
-                }));
-            });
         }
 
         private async void databaseListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,13 +115,6 @@ namespace LightOSS
             });
             _db = (string)databaseListBox.SelectedItem;
             _updateLabels();
-        }
-
-        private void _updateLabels()
-        {
-            if (!settingDBLabel.Text.Equals(_db)) settingDBLabel.Text = _db;
-            if (!settingCollLabel.Text.Equals(_coll)) settingCollLabel.Text = _coll;
-            if (!settingXAxisLabel.Text.Equals(_xAxisKey)) settingXAxisLabel.Text = _xAxisKey;
         }
 
         private void postCollection_Click(object sender, EventArgs e)
@@ -115,7 +157,7 @@ namespace LightOSS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new OSSChart(_url, _db, _coll, _counters, _xAxisKey).Show();
+            new OSSChart(_url, _db.ToString(), _coll.ToString(), _counters.ToList(), _xAxisKey.ToString()).Show();
         }
 
         private void removeCounter_Click(object sender, EventArgs e)
@@ -130,44 +172,6 @@ namespace LightOSS
             _fillFilterValues();
         }
 
-        private void _fillCountersBox()
-        {
-            countersListBox.Items.Clear();
-            _counters.ForEach(c =>
-            {
-                countersListBox.Items.Add(c);
-            });
-        }
-
-        private void _initPersistentSettings()
-        {
-            server.Text = Settings.Default.Server;
-            user.Text = Settings.Default.User;
-            pass.Text = Settings.Default.Pass;
-        }
-
-        private async void _fillFilterValues()
-        {
-            filterValues.Items.Clear();
-            var values = await _client
-                .GetDatabase(_db)
-                .GetCollection<BsonDocument>(_coll)
-                .DistinctAsync<dynamic>(_filterKey, Builders<BsonDocument>.Filter.Empty)
-                ;
-
-            await values.ForEachAsync((v) =>
-            {
-                this.Invoke(new MethodInvoker(delegate ()
-                {
-                    try
-                    {
-                        filterValues.Items.Add((string)v);
-                    } catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message + "\n\n" + "Only string types are supported currently!", "Problem getting filter values");
-                    }
-                }));
-            });
-        }
+        #endregion
     }
 }
