@@ -105,6 +105,11 @@ namespace LightOSS
 
         #region Event Callbacks
 
+        private void OSSChart_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            poller.Stop();
+        }
+
         private void _timerCallback(object sender, EventArgs e)
         {
             _populateData();

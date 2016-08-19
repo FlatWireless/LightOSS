@@ -100,6 +100,7 @@ namespace LightOSS
             this.Name = "OSSChart";
             this.ShowIcon = false;
             this.Text = "OSSChart";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OSSChart_FormClosed);
             this.Load += new System.EventHandler(this.OSSChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
