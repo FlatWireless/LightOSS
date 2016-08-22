@@ -97,6 +97,7 @@ namespace LightOSS
         private void _initializeChart()
         {
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "MM/dd HH:mm";
+            chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
             for (int i = 0; i < _counters.Count; i++)
             {
                 chart1.Series.Add(_generateSeries(_counters[i]));
