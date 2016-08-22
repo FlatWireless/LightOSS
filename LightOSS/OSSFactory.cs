@@ -62,7 +62,7 @@ namespace LightOSS
 
         private async void _fillFilterValues()
         {
-            filterValues.Items.Clear();
+            sourceListBox.Items.Clear();
             var values = await _client
                 .GetDatabase(_db)
                 .GetCollection<BsonDocument>(_coll)
@@ -75,7 +75,7 @@ namespace LightOSS
                 {
                     try
                     {
-                        filterValues.Items.Add((string)v);
+                        sourceListBox.Items.Add((string)v);
                     } catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message + "\n\n" + "Only string types are supported currently!", "Problem getting filter values");

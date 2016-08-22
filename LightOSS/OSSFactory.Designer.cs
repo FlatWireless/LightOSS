@@ -55,8 +55,7 @@ namespace LightOSS
             this.settingDBLabel = new System.Windows.Forms.Label();
             this.sdbLabel = new System.Windows.Forms.Label();
             this.setFilterKey = new System.Windows.Forms.Button();
-            this.filterValues = new System.Windows.Forms.ListBox();
-            this.fvlbLabel = new System.Windows.Forms.Label();
+            this.sourceListBox = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +65,7 @@ namespace LightOSS
             this.databaseListBox.FormattingEnabled = true;
             this.databaseListBox.Location = new System.Drawing.Point(228, 12);
             this.databaseListBox.Name = "databaseListBox";
-            this.databaseListBox.Size = new System.Drawing.Size(142, 485);
+            this.databaseListBox.Size = new System.Drawing.Size(244, 160);
             this.databaseListBox.TabIndex = 0;
             this.databaseListBox.SelectedIndexChanged += new System.EventHandler(this.databaseListBox_SelectedIndexChanged);
             // 
@@ -159,14 +158,14 @@ namespace LightOSS
             // collectionsListBox
             // 
             this.collectionsListBox.FormattingEnabled = true;
-            this.collectionsListBox.Location = new System.Drawing.Point(379, 12);
+            this.collectionsListBox.Location = new System.Drawing.Point(228, 178);
             this.collectionsListBox.Name = "collectionsListBox";
-            this.collectionsListBox.Size = new System.Drawing.Size(142, 485);
+            this.collectionsListBox.Size = new System.Drawing.Size(244, 316);
             this.collectionsListBox.TabIndex = 2;
             // 
             // postCollection
             // 
-            this.postCollection.Location = new System.Drawing.Point(527, 131);
+            this.postCollection.Location = new System.Drawing.Point(478, 188);
             this.postCollection.Name = "postCollection";
             this.postCollection.Size = new System.Drawing.Size(60, 23);
             this.postCollection.TabIndex = 3;
@@ -177,9 +176,9 @@ namespace LightOSS
             // keyListBox
             // 
             this.keyListBox.FormattingEnabled = true;
-            this.keyListBox.Location = new System.Drawing.Point(593, 12);
+            this.keyListBox.Location = new System.Drawing.Point(544, 12);
             this.keyListBox.Name = "keyListBox";
-            this.keyListBox.Size = new System.Drawing.Size(183, 485);
+            this.keyListBox.Size = new System.Drawing.Size(232, 212);
             this.keyListBox.TabIndex = 4;
             // 
             // setAxisKey
@@ -214,28 +213,28 @@ namespace LightOSS
             this.groupBox2.Controls.Add(this.sCollLabel);
             this.groupBox2.Controls.Add(this.settingDBLabel);
             this.groupBox2.Controls.Add(this.sdbLabel);
-            this.groupBox2.Location = new System.Drawing.Point(782, 262);
+            this.groupBox2.Location = new System.Drawing.Point(782, 93);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(274, 232);
+            this.groupBox2.Size = new System.Drawing.Size(274, 401);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OSS Settings";
             // 
             // removeCounter
             // 
-            this.removeCounter.Location = new System.Drawing.Point(229, 85);
+            this.removeCounter.Location = new System.Drawing.Point(140, 110);
             this.removeCounter.Name = "removeCounter";
-            this.removeCounter.Size = new System.Drawing.Size(39, 23);
+            this.removeCounter.Size = new System.Drawing.Size(128, 24);
             this.removeCounter.TabIndex = 9;
-            this.removeCounter.Text = "-";
+            this.removeCounter.Text = "Remove from counters";
             this.removeCounter.UseVisualStyleBackColor = true;
             this.removeCounter.Click += new System.EventHandler(this.removeCounter_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(193, 199);
+            this.button1.Location = new System.Drawing.Point(11, 372);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(257, 23);
             this.button1.TabIndex = 8;
             this.button1.Text = "OSSome!";
             this.button1.UseVisualStyleBackColor = true;
@@ -244,15 +243,15 @@ namespace LightOSS
             // countersListBox
             // 
             this.countersListBox.FormattingEnabled = true;
-            this.countersListBox.Location = new System.Drawing.Point(9, 111);
+            this.countersListBox.Location = new System.Drawing.Point(9, 137);
             this.countersListBox.Name = "countersListBox";
-            this.countersListBox.Size = new System.Drawing.Size(259, 82);
+            this.countersListBox.Size = new System.Drawing.Size(259, 225);
             this.countersListBox.TabIndex = 7;
             // 
             // sCLabel
             // 
             this.sCLabel.AutoSize = true;
-            this.sCLabel.Location = new System.Drawing.Point(8, 95);
+            this.sCLabel.Location = new System.Drawing.Point(8, 121);
             this.sCLabel.Name = "sCLabel";
             this.sCLabel.Size = new System.Drawing.Size(58, 13);
             this.sCLabel.TabIndex = 6;
@@ -318,34 +317,24 @@ namespace LightOSS
             this.setFilterKey.Name = "setFilterKey";
             this.setFilterKey.Size = new System.Drawing.Size(110, 21);
             this.setFilterKey.TabIndex = 8;
-            this.setFilterKey.Text = "Set as filter";
+            this.setFilterKey.Text = "Set as source key";
             this.setFilterKey.UseVisualStyleBackColor = true;
             this.setFilterKey.Click += new System.EventHandler(this.setFilterKey_Click);
             // 
-            // filterValues
+            // sourceListBox
             // 
-            this.filterValues.FormattingEnabled = true;
-            this.filterValues.Location = new System.Drawing.Point(782, 132);
-            this.filterValues.Name = "filterValues";
-            this.filterValues.Size = new System.Drawing.Size(274, 108);
-            this.filterValues.TabIndex = 9;
-            // 
-            // fvlbLabel
-            // 
-            this.fvlbLabel.AutoSize = true;
-            this.fvlbLabel.Location = new System.Drawing.Point(782, 116);
-            this.fvlbLabel.Name = "fvlbLabel";
-            this.fvlbLabel.Size = new System.Drawing.Size(109, 13);
-            this.fvlbLabel.TabIndex = 10;
-            this.fvlbLabel.Text = "Possible Filter Values:";
+            this.sourceListBox.FormattingEnabled = true;
+            this.sourceListBox.Location = new System.Drawing.Point(544, 230);
+            this.sourceListBox.Name = "sourceListBox";
+            this.sourceListBox.Size = new System.Drawing.Size(232, 264);
+            this.sourceListBox.TabIndex = 9;
             // 
             // OSSFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 506);
-            this.Controls.Add(this.fvlbLabel);
-            this.Controls.Add(this.filterValues);
+            this.Controls.Add(this.sourceListBox);
             this.Controls.Add(this.setFilterKey);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.addCounter);
@@ -363,7 +352,6 @@ namespace LightOSS
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -396,7 +384,6 @@ namespace LightOSS
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button removeCounter;
         private System.Windows.Forms.Button setFilterKey;
-        private System.Windows.Forms.ListBox filterValues;
-        private System.Windows.Forms.Label fvlbLabel;
+        private System.Windows.Forms.ListBox sourceListBox;
     }
 }
