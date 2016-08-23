@@ -30,6 +30,7 @@ namespace LightOSS
         {
             this.databaseListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.autoConnectCheckbox = new System.Windows.Forms.CheckBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.ossButton = new System.Windows.Forms.Button();
             this.pass = new System.Windows.Forms.TextBox();
@@ -56,17 +57,35 @@ namespace LightOSS
             this.sdbLabel = new System.Windows.Forms.Label();
             this.setFilterKey = new System.Windows.Forms.Button();
             this.sourceListBox = new System.Windows.Forms.ListBox();
-            this.autoConnectCheckbox = new System.Windows.Forms.CheckBox();
+            this.dbAndCollectionSplitPanel = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.keyAndSourceListBox = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dbAndCollectionSplitPanel)).BeginInit();
+            this.dbAndCollectionSplitPanel.Panel1.SuspendLayout();
+            this.dbAndCollectionSplitPanel.Panel2.SuspendLayout();
+            this.dbAndCollectionSplitPanel.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.keyAndSourceListBox)).BeginInit();
+            this.keyAndSourceListBox.Panel1.SuspendLayout();
+            this.keyAndSourceListBox.Panel2.SuspendLayout();
+            this.keyAndSourceListBox.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // databaseListBox
             // 
+            this.databaseListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.databaseListBox.FormattingEnabled = true;
-            this.databaseListBox.Location = new System.Drawing.Point(228, 12);
+            this.databaseListBox.Location = new System.Drawing.Point(3, 16);
             this.databaseListBox.Name = "databaseListBox";
-            this.databaseListBox.Size = new System.Drawing.Size(244, 160);
+            this.databaseListBox.Size = new System.Drawing.Size(238, 222);
             this.databaseListBox.TabIndex = 0;
             this.databaseListBox.SelectedIndexChanged += new System.EventHandler(this.databaseListBox_SelectedIndexChanged);
             // 
@@ -87,6 +106,18 @@ namespace LightOSS
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connect";
+            // 
+            // autoConnectCheckbox
+            // 
+            this.autoConnectCheckbox.AutoSize = true;
+            this.autoConnectCheckbox.Checked = global::LightOSS.Settings.Default.AutoConnect;
+            this.autoConnectCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LightOSS.Settings.Default, "AutoConnect", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.autoConnectCheckbox.Location = new System.Drawing.Point(46, 105);
+            this.autoConnectCheckbox.Name = "autoConnectCheckbox";
+            this.autoConnectCheckbox.Size = new System.Drawing.Size(131, 17);
+            this.autoConnectCheckbox.TabIndex = 8;
+            this.autoConnectCheckbox.Text = "Connect Automatically";
+            this.autoConnectCheckbox.UseVisualStyleBackColor = true;
             // 
             // saveButton
             // 
@@ -165,10 +196,11 @@ namespace LightOSS
             // 
             // collectionsListBox
             // 
+            this.collectionsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.collectionsListBox.FormattingEnabled = true;
-            this.collectionsListBox.Location = new System.Drawing.Point(228, 178);
+            this.collectionsListBox.Location = new System.Drawing.Point(3, 16);
             this.collectionsListBox.Name = "collectionsListBox";
-            this.collectionsListBox.Size = new System.Drawing.Size(244, 316);
+            this.collectionsListBox.Size = new System.Drawing.Size(238, 218);
             this.collectionsListBox.TabIndex = 2;
             // 
             // postCollection
@@ -183,10 +215,11 @@ namespace LightOSS
             // 
             // keyListBox
             // 
+            this.keyListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.keyListBox.FormattingEnabled = true;
-            this.keyListBox.Location = new System.Drawing.Point(544, 12);
+            this.keyListBox.Location = new System.Drawing.Point(3, 16);
             this.keyListBox.Name = "keyListBox";
-            this.keyListBox.Size = new System.Drawing.Size(232, 212);
+            this.keyListBox.Size = new System.Drawing.Size(226, 223);
             this.keyListBox.TabIndex = 4;
             // 
             // setAxisKey
@@ -331,39 +364,105 @@ namespace LightOSS
             // 
             // sourceListBox
             // 
+            this.sourceListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sourceListBox.FormattingEnabled = true;
-            this.sourceListBox.Location = new System.Drawing.Point(544, 230);
+            this.sourceListBox.Location = new System.Drawing.Point(3, 16);
             this.sourceListBox.Name = "sourceListBox";
-            this.sourceListBox.Size = new System.Drawing.Size(232, 264);
+            this.sourceListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.sourceListBox.Size = new System.Drawing.Size(226, 220);
             this.sourceListBox.TabIndex = 9;
             // 
-            // autoConnectCheckbox
+            // dbAndCollectionSplitPanel
             // 
-            this.autoConnectCheckbox.AutoSize = true;
-            this.autoConnectCheckbox.Checked = global::LightOSS.Settings.Default.AutoConnect;
-            this.autoConnectCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LightOSS.Settings.Default, "AutoConnect", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.autoConnectCheckbox.Location = new System.Drawing.Point(46, 105);
-            this.autoConnectCheckbox.Name = "autoConnectCheckbox";
-            this.autoConnectCheckbox.Size = new System.Drawing.Size(131, 17);
-            this.autoConnectCheckbox.TabIndex = 8;
-            this.autoConnectCheckbox.Text = "Connect Automatically";
-            this.autoConnectCheckbox.UseVisualStyleBackColor = true;
+            this.dbAndCollectionSplitPanel.Location = new System.Drawing.Point(228, 12);
+            this.dbAndCollectionSplitPanel.Name = "dbAndCollectionSplitPanel";
+            this.dbAndCollectionSplitPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // dbAndCollectionSplitPanel.Panel1
+            // 
+            this.dbAndCollectionSplitPanel.Panel1.Controls.Add(this.groupBox3);
+            // 
+            // dbAndCollectionSplitPanel.Panel2
+            // 
+            this.dbAndCollectionSplitPanel.Panel2.Controls.Add(this.groupBox4);
+            this.dbAndCollectionSplitPanel.Size = new System.Drawing.Size(244, 482);
+            this.dbAndCollectionSplitPanel.SplitterDistance = 241;
+            this.dbAndCollectionSplitPanel.TabIndex = 10;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.databaseListBox);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(244, 241);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Databases";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.collectionsListBox);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(244, 237);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Collections";
+            // 
+            // keyAndSourceListBox
+            // 
+            this.keyAndSourceListBox.Location = new System.Drawing.Point(544, 9);
+            this.keyAndSourceListBox.Name = "keyAndSourceListBox";
+            this.keyAndSourceListBox.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // keyAndSourceListBox.Panel1
+            // 
+            this.keyAndSourceListBox.Panel1.Controls.Add(this.groupBox5);
+            // 
+            // keyAndSourceListBox.Panel2
+            // 
+            this.keyAndSourceListBox.Panel2.Controls.Add(this.groupBox6);
+            this.keyAndSourceListBox.Size = new System.Drawing.Size(232, 485);
+            this.keyAndSourceListBox.SplitterDistance = 242;
+            this.keyAndSourceListBox.TabIndex = 11;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.keyListBox);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(232, 242);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Keys";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.sourceListBox);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(0, 0);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(232, 239);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Sources";
             // 
             // OSSFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 506);
-            this.Controls.Add(this.sourceListBox);
+            this.Controls.Add(this.keyAndSourceListBox);
+            this.Controls.Add(this.dbAndCollectionSplitPanel);
             this.Controls.Add(this.setFilterKey);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.addCounter);
             this.Controls.Add(this.setAxisKey);
-            this.Controls.Add(this.keyListBox);
             this.Controls.Add(this.postCollection);
-            this.Controls.Add(this.collectionsListBox);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.databaseListBox);
             this.Name = "OSSFactory";
             this.ShowIcon = false;
             this.Text = "OSSFactory";
@@ -371,6 +470,18 @@ namespace LightOSS
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.dbAndCollectionSplitPanel.Panel1.ResumeLayout(false);
+            this.dbAndCollectionSplitPanel.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dbAndCollectionSplitPanel)).EndInit();
+            this.dbAndCollectionSplitPanel.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.keyAndSourceListBox.Panel1.ResumeLayout(false);
+            this.keyAndSourceListBox.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.keyAndSourceListBox)).EndInit();
+            this.keyAndSourceListBox.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -406,5 +517,11 @@ namespace LightOSS
         private System.Windows.Forms.Button setFilterKey;
         private System.Windows.Forms.ListBox sourceListBox;
         private System.Windows.Forms.CheckBox autoConnectCheckbox;
+        private System.Windows.Forms.SplitContainer dbAndCollectionSplitPanel;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.SplitContainer keyAndSourceListBox;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
