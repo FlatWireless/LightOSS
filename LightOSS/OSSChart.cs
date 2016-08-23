@@ -46,9 +46,13 @@ namespace LightOSS
             return new System.Windows.Forms.DataVisualization.Charting.Series
             {
                 Name = counter,
-                ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine,
+                ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area,
                 XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime,
-                BorderWidth = 3
+                BorderWidth = 3,
+                ToolTip = string.Format("#SER{0}{1}: #VALX{0}{2}: #VALY", 
+                Environment.NewLine,
+                _xAxisKey,
+                counter)
             };
         }
 
@@ -64,27 +68,32 @@ namespace LightOSS
                     .Limit(144)
                     .ToListAsync();
 
-                this.Invoke(new MethodInvoker(delegate ()
+                
+                foreach (var point in dataPoints)
                 {
-                    foreach (var point in dataPoints)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        try
-                        {
-                            chart1
-                              .Series[_counters[i]]
-                              .Points
-                              .AddXY(((DateTime)point[_xAxisKey]).ToLocalTime(), (long)point[_counters[i]]);
-                        }
-                        catch (InvalidCastException ex)
-                        {
-                            chart1
-                              .Series[_counters[i]]
-                              .Points
-                              .AddXY(((DateTime)point[_xAxisKey]).ToLocalTime(), (double)point[_counters[i]]);
-                        }
-                    }
-                }));
+                        _addPoint(point, _counters[i], _xAxisKey);
+                    }));
+                }
+                
             }
+        }
+        private void _addPoint(BsonDocument point, string counter, string xValKey)
+        {
+            dynamic xval, yval;
+            try { xval = (DateTime)point[xValKey]; }
+            catch (InvalidCastException ex) { xval = (string)point[xValKey]; }
+
+            try { yval = (int)point[counter]; }
+            catch (InvalidCastException ex) { yval = (long)point[counter]; }
+            catch (Exception ex) { yval = (double)point[counter]; }
+
+
+            chart1
+                .Series[counter]
+                .Points
+                .AddXY(xval, yval);
         }
 
         private void _initializeDb(MongoUrl url)
@@ -96,6 +105,7 @@ namespace LightOSS
 
         private void _initializeChart()
         {
+            chart1.Titles.Add(string.Format("{0} - {1}", _database, _collection));
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "MM/dd HH:mm";
             chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
             for (int i = 0; i < _counters.Count; i++)
