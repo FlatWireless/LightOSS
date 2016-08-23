@@ -85,7 +85,7 @@ namespace LightOSS
             this.databaseListBox.FormattingEnabled = true;
             this.databaseListBox.Location = new System.Drawing.Point(3, 16);
             this.databaseListBox.Name = "databaseListBox";
-            this.databaseListBox.Size = new System.Drawing.Size(238, 222);
+            this.databaseListBox.Size = new System.Drawing.Size(257, 222);
             this.databaseListBox.TabIndex = 0;
             this.databaseListBox.SelectedIndexChanged += new System.EventHandler(this.databaseListBox_SelectedIndexChanged);
             // 
@@ -200,12 +200,12 @@ namespace LightOSS
             this.collectionsListBox.FormattingEnabled = true;
             this.collectionsListBox.Location = new System.Drawing.Point(3, 16);
             this.collectionsListBox.Name = "collectionsListBox";
-            this.collectionsListBox.Size = new System.Drawing.Size(238, 218);
+            this.collectionsListBox.Size = new System.Drawing.Size(257, 218);
             this.collectionsListBox.TabIndex = 2;
             // 
             // postCollection
             // 
-            this.postCollection.Location = new System.Drawing.Point(478, 188);
+            this.postCollection.Location = new System.Drawing.Point(497, 187);
             this.postCollection.Name = "postCollection";
             this.postCollection.Size = new System.Drawing.Size(60, 23);
             this.postCollection.TabIndex = 3;
@@ -219,12 +219,12 @@ namespace LightOSS
             this.keyListBox.FormattingEnabled = true;
             this.keyListBox.Location = new System.Drawing.Point(3, 16);
             this.keyListBox.Name = "keyListBox";
-            this.keyListBox.Size = new System.Drawing.Size(226, 223);
+            this.keyListBox.Size = new System.Drawing.Size(404, 223);
             this.keyListBox.TabIndex = 4;
             // 
             // setAxisKey
             // 
-            this.setAxisKey.Location = new System.Drawing.Point(782, 12);
+            this.setAxisKey.Location = new System.Drawing.Point(979, 12);
             this.setAxisKey.Name = "setAxisKey";
             this.setAxisKey.Size = new System.Drawing.Size(110, 22);
             this.setAxisKey.TabIndex = 5;
@@ -234,7 +234,7 @@ namespace LightOSS
             // 
             // addCounter
             // 
-            this.addCounter.Location = new System.Drawing.Point(782, 40);
+            this.addCounter.Location = new System.Drawing.Point(979, 40);
             this.addCounter.Name = "addCounter";
             this.addCounter.Size = new System.Drawing.Size(110, 22);
             this.addCounter.TabIndex = 6;
@@ -254,7 +254,7 @@ namespace LightOSS
             this.groupBox2.Controls.Add(this.sCollLabel);
             this.groupBox2.Controls.Add(this.settingDBLabel);
             this.groupBox2.Controls.Add(this.sdbLabel);
-            this.groupBox2.Location = new System.Drawing.Point(782, 93);
+            this.groupBox2.Location = new System.Drawing.Point(979, 93);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(274, 401);
             this.groupBox2.TabIndex = 7;
@@ -354,7 +354,7 @@ namespace LightOSS
             // 
             // setFilterKey
             // 
-            this.setFilterKey.Location = new System.Drawing.Point(782, 66);
+            this.setFilterKey.Location = new System.Drawing.Point(979, 66);
             this.setFilterKey.Name = "setFilterKey";
             this.setFilterKey.Size = new System.Drawing.Size(110, 21);
             this.setFilterKey.TabIndex = 8;
@@ -366,10 +366,12 @@ namespace LightOSS
             // 
             this.sourceListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sourceListBox.FormattingEnabled = true;
+            this.sourceListBox.HorizontalScrollbar = true;
             this.sourceListBox.Location = new System.Drawing.Point(3, 16);
             this.sourceListBox.Name = "sourceListBox";
-            this.sourceListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.sourceListBox.Size = new System.Drawing.Size(226, 220);
+            this.sourceListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.sourceListBox.Size = new System.Drawing.Size(404, 220);
+            this.sourceListBox.Sorted = true;
             this.sourceListBox.TabIndex = 9;
             // 
             // dbAndCollectionSplitPanel
@@ -385,7 +387,7 @@ namespace LightOSS
             // dbAndCollectionSplitPanel.Panel2
             // 
             this.dbAndCollectionSplitPanel.Panel2.Controls.Add(this.groupBox4);
-            this.dbAndCollectionSplitPanel.Size = new System.Drawing.Size(244, 482);
+            this.dbAndCollectionSplitPanel.Size = new System.Drawing.Size(263, 482);
             this.dbAndCollectionSplitPanel.SplitterDistance = 241;
             this.dbAndCollectionSplitPanel.TabIndex = 10;
             // 
@@ -395,7 +397,7 @@ namespace LightOSS
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(244, 241);
+            this.groupBox3.Size = new System.Drawing.Size(263, 241);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Databases";
@@ -406,14 +408,14 @@ namespace LightOSS
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(244, 237);
+            this.groupBox4.Size = new System.Drawing.Size(263, 237);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Collections";
             // 
             // keyAndSourceListBox
             // 
-            this.keyAndSourceListBox.Location = new System.Drawing.Point(544, 9);
+            this.keyAndSourceListBox.Location = new System.Drawing.Point(563, 9);
             this.keyAndSourceListBox.Name = "keyAndSourceListBox";
             this.keyAndSourceListBox.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -424,7 +426,7 @@ namespace LightOSS
             // keyAndSourceListBox.Panel2
             // 
             this.keyAndSourceListBox.Panel2.Controls.Add(this.groupBox6);
-            this.keyAndSourceListBox.Size = new System.Drawing.Size(232, 485);
+            this.keyAndSourceListBox.Size = new System.Drawing.Size(410, 485);
             this.keyAndSourceListBox.SplitterDistance = 242;
             this.keyAndSourceListBox.TabIndex = 11;
             // 
@@ -434,7 +436,7 @@ namespace LightOSS
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(0, 0);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(232, 242);
+            this.groupBox5.Size = new System.Drawing.Size(410, 242);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Keys";
@@ -445,7 +447,7 @@ namespace LightOSS
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(0, 0);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(232, 239);
+            this.groupBox6.Size = new System.Drawing.Size(410, 239);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sources";
@@ -454,7 +456,7 @@ namespace LightOSS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 506);
+            this.ClientSize = new System.Drawing.Size(1265, 506);
             this.Controls.Add(this.keyAndSourceListBox);
             this.Controls.Add(this.dbAndCollectionSplitPanel);
             this.Controls.Add(this.setFilterKey);
