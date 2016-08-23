@@ -22,7 +22,6 @@ namespace LightOSS
         public OSSFactory()
         {
             InitializeComponent();
-            _initPersistentSettings();
         }
 
         private async void _populateDatabaseList()
@@ -53,13 +52,6 @@ namespace LightOSS
             });
         }
 
-        private void _initPersistentSettings()
-        {
-            server.Text = Settings.Default.Server;
-            user.Text = Settings.Default.User;
-            pass.Text = Settings.Default.Pass;
-        }
-
         private async void _fillFilterValues()
         {
             sourceListBox.Items.Clear();
@@ -73,13 +65,7 @@ namespace LightOSS
             {
                 this.Invoke(new MethodInvoker(delegate ()
                 {
-                    try
-                    {
-                        sourceListBox.Items.Add((string)v);
-                    } catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message + "\n\n" + "Only string types are supported currently!", "Problem getting filter values");
-                    }
+                    sourceListBox.Items.Add(v);
                 }));
             });
         }
