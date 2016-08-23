@@ -56,6 +56,7 @@ namespace LightOSS
             this.sdbLabel = new System.Windows.Forms.Label();
             this.setFilterKey = new System.Windows.Forms.Button();
             this.sourceListBox = new System.Windows.Forms.ListBox();
+            this.autoConnectCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +72,7 @@ namespace LightOSS
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.autoConnectCheckbox);
             this.groupBox1.Controls.Add(this.saveButton);
             this.groupBox1.Controls.Add(this.ossButton);
             this.groupBox1.Controls.Add(this.pass);
@@ -81,14 +83,14 @@ namespace LightOSS
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 158);
+            this.groupBox1.Size = new System.Drawing.Size(210, 181);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connect";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(113, 109);
+            this.saveButton.Location = new System.Drawing.Point(113, 138);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(89, 33);
             this.saveButton.TabIndex = 7;
@@ -98,7 +100,7 @@ namespace LightOSS
             // 
             // ossButton
             // 
-            this.ossButton.Location = new System.Drawing.Point(9, 109);
+            this.ossButton.Location = new System.Drawing.Point(9, 138);
             this.ossButton.Name = "ossButton";
             this.ossButton.Size = new System.Drawing.Size(98, 33);
             this.ossButton.TabIndex = 2;
@@ -108,11 +110,13 @@ namespace LightOSS
             // 
             // pass
             // 
+            this.pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LightOSS.Settings.Default, "Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.pass.Location = new System.Drawing.Point(46, 77);
             this.pass.Name = "pass";
             this.pass.PasswordChar = '*';
             this.pass.Size = new System.Drawing.Size(156, 20);
             this.pass.TabIndex = 5;
+            this.pass.Text = global::LightOSS.Settings.Default.Pass;
             // 
             // label3
             // 
@@ -125,10 +129,12 @@ namespace LightOSS
             // 
             // user
             // 
+            this.user.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LightOSS.Settings.Default, "User", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.user.Location = new System.Drawing.Point(46, 51);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(156, 20);
             this.user.TabIndex = 3;
+            this.user.Text = global::LightOSS.Settings.Default.User;
             // 
             // label2
             // 
@@ -141,10 +147,12 @@ namespace LightOSS
             // 
             // server
             // 
+            this.server.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LightOSS.Settings.Default, "Server", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.server.Location = new System.Drawing.Point(46, 25);
             this.server.Name = "server";
             this.server.Size = new System.Drawing.Size(156, 20);
             this.server.TabIndex = 2;
+            this.server.Text = global::LightOSS.Settings.Default.Server;
             // 
             // label1
             // 
@@ -329,6 +337,18 @@ namespace LightOSS
             this.sourceListBox.Size = new System.Drawing.Size(232, 264);
             this.sourceListBox.TabIndex = 9;
             // 
+            // autoConnectCheckbox
+            // 
+            this.autoConnectCheckbox.AutoSize = true;
+            this.autoConnectCheckbox.Checked = global::LightOSS.Settings.Default.AutoConnect;
+            this.autoConnectCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LightOSS.Settings.Default, "AutoConnect", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.autoConnectCheckbox.Location = new System.Drawing.Point(46, 105);
+            this.autoConnectCheckbox.Name = "autoConnectCheckbox";
+            this.autoConnectCheckbox.Size = new System.Drawing.Size(131, 17);
+            this.autoConnectCheckbox.TabIndex = 8;
+            this.autoConnectCheckbox.Text = "Connect Automatically";
+            this.autoConnectCheckbox.UseVisualStyleBackColor = true;
+            // 
             // OSSFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,5 +405,6 @@ namespace LightOSS
         private System.Windows.Forms.Button removeCounter;
         private System.Windows.Forms.Button setFilterKey;
         private System.Windows.Forms.ListBox sourceListBox;
+        private System.Windows.Forms.CheckBox autoConnectCheckbox;
     }
 }
