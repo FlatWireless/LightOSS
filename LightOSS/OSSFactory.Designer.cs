@@ -28,6 +28,7 @@ namespace LightOSS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OSSFactory));
             this.databaseListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.autoConnectCheckbox = new System.Windows.Forms.CheckBox();
@@ -465,8 +466,8 @@ namespace LightOSS
             this.Controls.Add(this.setAxisKey);
             this.Controls.Add(this.postCollection);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OSSFactory";
-            this.ShowIcon = false;
             this.Text = "OSSFactory";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
