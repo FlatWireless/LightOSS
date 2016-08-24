@@ -126,7 +126,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+      <Exec Command="&quot;$(ProgramFiles)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com&quot; Setup.vdproj /build &quot;Release|AnyCPU&quot;"/>
+  </Target>
 </Project>
