@@ -200,7 +200,7 @@
         {
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_202A448BF7D84F35A63F4B3EAAAC1B1C"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\Data-Binding-32.ico"
+            "SourcePath" = "8:Data-Binding-32.ico"
             "TargetName" = "8:Data-Binding-32.ico"
             "Tag" = "8:"
             "Folder" = "8:_9DB08D78BB71440A9B7F0E66F2B49697"
