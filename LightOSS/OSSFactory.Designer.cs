@@ -135,7 +135,7 @@ namespace LightOSS
             this.ossButton.Name = "ossButton";
             this.ossButton.Size = new System.Drawing.Size(98, 33);
             this.ossButton.TabIndex = 2;
-            this.ossButton.Text = "Oss!";
+            this.ossButton.Text = "Connect";
             this.ossButton.UseVisualStyleBackColor = true;
             this.ossButton.Click += new System.EventHandler(this.ossButton_Click);
             // 
@@ -277,7 +277,7 @@ namespace LightOSS
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(257, 23);
             this.button1.TabIndex = 8;
-            this.button1.Text = "OSSome!";
+            this.button1.Text = "Generate OSS";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
