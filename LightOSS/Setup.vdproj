@@ -429,15 +429,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LightOSS"
-        "ProductCode" = "8:{D2F58766-CFFC-4862-8E7E-0D433F1D4822}"
-        "PackageCode" = "8:{5E71C850-BBF7-4173-B116-BF7A48B08018}"
+        "ProductCode" = "8:{0CB6B184-70F8-41A0-9D46-0587125587FB}"
+        "PackageCode" = "8:{263A364B-5069-4606-B2FE-9BF2A27B2E4B}"
         "UpgradeCode" = "8:{BBCF74E9-3328-40F6-93CA-7DDA59B11216}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Johnny Reina"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jreina/LightOSS/issues"
@@ -979,7 +979,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_179D9E811F754280B000EB9B4ED83D37"
             {
-            "SourcePath" = "8:obj\\Release\\LightOSS.exe"
+            "SourcePath" = "8:obj\\Debug\\LightOSS.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9DB08D78BB71440A9B7F0E66F2B49697"
