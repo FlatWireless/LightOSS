@@ -119,6 +119,7 @@ namespace LightOSS
             this.autoConnectCheckbox.TabIndex = 8;
             this.autoConnectCheckbox.Text = "Connect Automatically";
             this.autoConnectCheckbox.UseVisualStyleBackColor = true;
+            this.autoConnectCheckbox.Visible = false;
             // 
             // saveButton
             // 
@@ -361,11 +362,13 @@ namespace LightOSS
             this.setFilterKey.TabIndex = 8;
             this.setFilterKey.Text = "Set as source key";
             this.setFilterKey.UseVisualStyleBackColor = true;
+            this.setFilterKey.Visible = false;
             this.setFilterKey.Click += new System.EventHandler(this.setFilterKey_Click);
             // 
             // sourceListBox
             // 
             this.sourceListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sourceListBox.Enabled = false;
             this.sourceListBox.FormattingEnabled = true;
             this.sourceListBox.HorizontalScrollbar = true;
             this.sourceListBox.Location = new System.Drawing.Point(3, 16);
@@ -374,6 +377,7 @@ namespace LightOSS
             this.sourceListBox.Size = new System.Drawing.Size(404, 220);
             this.sourceListBox.Sorted = true;
             this.sourceListBox.TabIndex = 9;
+            this.sourceListBox.Visible = false;
             // 
             // dbAndCollectionSplitPanel
             // 
@@ -452,6 +456,7 @@ namespace LightOSS
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sources";
+            this.groupBox6.Visible = false;
             // 
             // OSSFactory
             // 
