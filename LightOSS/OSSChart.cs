@@ -49,10 +49,11 @@ namespace LightOSS
                 ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area,
                 XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime,
                 BorderWidth = 3,
-                ToolTip = string.Format("#SER{0}{1}: #VALX{0}{2}: #VALY", 
+                ToolTip = string.Format("#SER{0}{1}: {3}{0}{2}: #VALY", 
                 Environment.NewLine,
                 _xAxisKey,
-                counter)
+                counter,
+                "#VALX{MM/dd HH:mm}")
             };
         }
 
@@ -82,7 +83,7 @@ namespace LightOSS
         private void _addPoint(BsonDocument point, string counter, string xValKey)
         {
             dynamic xval, yval;
-            try { xval = (DateTime)point[xValKey]; }
+            try { xval = ((DateTime)point[xValKey]).ToLocalTime(); }
             catch (InvalidCastException ex) { xval = (string)point[xValKey]; }
 
             try { yval = (int)point[counter]; }
