@@ -87,9 +87,17 @@ namespace LightOSS
             catch (InvalidCastException ex) { xval = (string)point[xValKey]; }
 
             try { yval = (int)point[counter]; }
-            catch (InvalidCastException ex) { yval = (long)point[counter]; }
-            catch (Exception ex) { yval = (double)point[counter]; }
-
+            catch (InvalidCastException ex) {
+                try { yval = (long)point[counter]; }
+                catch(InvalidCastException longCastEx)
+                {
+                    yval = (double)point[counter];
+                }
+            }
+            finally
+            {
+                yval = point[counter].ToString();
+            }
 
             chart1
                 .Series[counter]
