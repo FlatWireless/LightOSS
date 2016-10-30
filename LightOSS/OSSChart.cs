@@ -66,7 +66,7 @@ namespace LightOSS
                 var dataPoints = await _coll
                     .Find<BsonDocument>(Builders<BsonDocument>.Filter.Empty)
                     .SortByDescending(r => r[_xAxisKey])
-                    .Limit(144)
+                    .Limit(_count)
                     .ToListAsync();
 
                 
